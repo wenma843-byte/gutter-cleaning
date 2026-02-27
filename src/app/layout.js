@@ -1,7 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import NavServicesDropdown from "./components/NavServicesDropdown";
 import "./globals.css";
+import RenewLogo from "../RENEW LOGO NO BACKGROUND.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,15 +29,15 @@ function Nav() {
       >
         <Link
           href="/"
-          className="flex flex-col items-center gap-1 text-teal-600 hover:text-teal-700 sm:items-start"
+          className="flex items-center gap-3 text-teal-600 hover:text-teal-700"
+          aria-label="Renew Exterior Cleaning home"
         >
-          <span
-            className="flex h-10 w-24 shrink-0 items-center justify-center rounded-lg border-2 border-dashed border-zinc-300 bg-zinc-50 px-1 text-center text-[10px] leading-tight text-zinc-500"
-            aria-hidden
-          >
-            Put your Logo here!
-          </span>
-          <span className="text-xl font-semibold">Gutter Clean</span>
+          <Image
+            src={RenewLogo}
+            alt="Renew Exterior Cleaning logo"
+            className="h-36 w-auto sm:h-40"
+            priority
+          />
         </Link>
         <ul className="flex flex-wrap items-center justify-center gap-4 text-xl font-semibold text-zinc-600 sm:gap-6">
           <li>

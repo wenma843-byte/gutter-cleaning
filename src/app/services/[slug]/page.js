@@ -6,8 +6,9 @@ export async function generateMetadata({ params }) {
   const slug = typeof params?.slug === "string" ? params.slug : (await params)?.slug;
   const service = getServiceBySlug(slug);
   if (!service) return { title: "Service | Gutter Cleaning" };
+  const category = service.category === "residential" ? "Residential" : "Commercial";
   return {
-    title: `${service.title} | Gutter Cleaning`,
+    title: `${service.title} | ${category}`,
     description: service.description,
   };
 }
@@ -28,7 +29,7 @@ export default async function ServiceDetailPage({ params }) {
           ← Back to About us
         </Link>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-          {service.title}
+          {service.category === "residential" ? "Residential" : "Commercial"} – {service.title}
         </h1>
         <p className="mt-6 leading-relaxed text-zinc-600">{service.description}</p>
         <div className="mt-10">

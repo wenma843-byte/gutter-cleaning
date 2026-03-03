@@ -45,7 +45,7 @@ export default function AboutUs() {
         <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
             <li
-              key={service.title}
+              key={service.slug}
               className="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm"
             >
               <div className="relative flex aspect-[2/5] min-h-[280px] w-full shrink-0 items-center justify-center bg-gradient-to-br from-teal-500 to-teal-700">
@@ -60,7 +60,9 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="p-4">
-                <h2 className="text-lg font-semibold text-teal-700">{service.title}</h2>
+                <h2 className="text-lg font-semibold text-teal-700">
+                  {service.category === "residential" ? "Residential" : "Commercial"} – {service.title}
+                </h2>
                 <p className="mt-2 text-sm text-zinc-600 md:hidden">{service.description}</p>
               </div>
             </li>

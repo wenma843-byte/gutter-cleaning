@@ -1,18 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lexend } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import NavServicesDropdown from "./components/NavServicesDropdown";
 import "./globals.css";
 import RenewLogo from "../RENEW LOGO NO BACKGROUND.png";
+import homeBackground from "../Background.jpg";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lexend = Lexend({
+  variable: "--font-lexend",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata = {
@@ -22,24 +19,26 @@ export const metadata = {
 
 function Nav() {
   return (
-    <header className="px-4 py-6 sm:px-6">
+    <header className="sticky top-0 z-40 px-10 pt-4 sm:px-12 sm:pt-6">
       <nav
-        className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-8 rounded-2xl border border-zinc-200 bg-white px-6 py-4 shadow-lg shadow-zinc-200/50 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-10"
+        className="flex w-full flex-col items-center justify-between gap-4 overflow-visible rounded-2xl border border-zinc-200 bg-white/80 px-16 py-5 shadow-lg shadow-zinc-200/50 backdrop-blur-md sm:flex-row sm:px-20"
         aria-label="Main navigation"
       >
         <Link
           href="/"
-          className="flex items-center gap-3 text-teal-600 hover:text-teal-700"
+          className="flex shrink-0 items-center text-teal-600 hover:text-teal-700"
           aria-label="Renew Exterior Cleaning home"
         >
-          <Image
-            src={RenewLogo}
-            alt="Renew Exterior Cleaning logo"
-            className="h-36 w-auto sm:h-40"
-            priority
-          />
+          <span className="block h-12 w-24 overflow-hidden sm:h-12 sm:w-36">
+            <Image
+              src={RenewLogo}
+              alt="Renew Exterior Cleaning logo"
+              className="h-full w-full object-cover object-center"
+              priority
+            />
+          </span>
         </Link>
-        <ul className="flex flex-wrap items-center justify-center gap-4 text-xl font-semibold text-zinc-600 sm:gap-6">
+        <ul className="flex w-full flex-wrap items-center justify-center gap-6 text-lg font-medium text-zinc-600 sm:w-auto sm:flex-1 sm:justify-between sm:gap-0 sm:pl-80">
           <li>
             <Link href="/" className="hover:text-teal-600">
               Home
@@ -52,8 +51,13 @@ function Nav() {
           </li>
           <NavServicesDropdown />
           <li>
+            <Link href="/gallery" className="hover:text-teal-600">
+              Gallery
+            </Link>
+          </li>
+          <li>
             <Link href="/contact" className="hover:text-teal-600">
-              Get a Quote
+              Contact us
             </Link>
           </li>
         </ul>
@@ -65,7 +69,15 @@ function Nav() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased bg-white text-zinc-900`}>
+      <body className={`${lexend.variable} relative min-h-screen antialiased bg-white font-sans text-zinc-900`}>
+        <div
+          className="hero-background-image fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${homeBackground.src})`,
+            opacity: 0.8,
+          }}
+          aria-hidden
+        />
         <Nav />
         {children}
       </body>

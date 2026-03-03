@@ -1,9 +1,10 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { services } from "@/data/services";
+import { serviceCategories } from "@/data/services";
 
-function ChevronDown({ className }) {
+function ChevronDown({ className, open }) {
   return (
     <svg
       className={className}
@@ -22,62 +23,80 @@ function ChevronDown({ className }) {
 }
 
 /**
- * Nav item "Services" with down arrow; shows a styled dropdown with service links on hover.
+ * Nav item "Services" with dropdown:
+ * - Residential → Gutter cleaning, Window cleaning
+ * - Commercial → Gutter cleaning, Window cleaning
+ * Works with both hover and click (click for touch / reliability).
  */
 export default function NavServicesDropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const show = open;
+
   return (
-    <li className="relative group">
+    <li ref={ref} className="relative group">
       <button
         type="button"
-        className="flex cursor-default items-center gap-1.5 text-xl font-semibold text-zinc-600 hover:text-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded"
-        aria-expanded="false"
+        onClick={() => setOpen((o) => !o)}
+        className="flex cursor-pointer items-center gap-1.5 text-lg font-medium text-zinc-600 hover:text-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded whitespace-nowrap"
+        aria-expanded={show}
         aria-haspopup="true"
-        aria-controls="services-menu"
-        id="services-trigger"
       >
         <span>Services</span>
-        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:rotate-180" />
-      </button>
-      {/* Invisible bridge so hover doesn't break between trigger and menu */}
-      <div className="absolute left-0 right-0 top-full h-2" aria-hidden />
-      <div
-        id="services-menu"
-        role="menu"
-        aria-orientation="vertical"
-        aria-labelledby="services-trigger"
-        className="absolute left-0 top-full z-50 mt-2 hidden w-[280px] rounded-xl border border-zinc-200 bg-white py-2 shadow-xl ring-1 ring-zinc-900/5 group-hover:block"
-      >
-        {/* Arrow pointing up */}
-        <div
-          className="absolute -top-2 left-6 h-2 w-4 border-l border-t border-r border-transparent border-b-zinc-200 bg-transparent"
-          aria-hidden
+        <ChevronDown
+          open={show}
+          className={`h-5 w-5 shrink-0 transition-transform duration-200 ${show ? "rotate-180" : "group-hover:rotate-180"}`}
         />
-        <div className="absolute -top-[1px] left-6 h-2 w-4 border-l border-t border-r border-transparent border-b-white bg-transparent" aria-hidden />
-        <p className="border-b border-zinc-100 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
-          Our services
-        </p>
-        <ul className="py-1" role="none">
-          {services.map((service, index) => (
-            <li key={service.slug} role="none">
-              {index > 0 && (
-                <div className="my-1 border-t border-zinc-100" aria-hidden />
-              )}
-              <Link
-                href={`/services/${service.slug}`}
-                role="menuitem"
-                className="flex px-4 py-2.5 text-sm text-zinc-700 transition-colors hover:bg-teal-50 hover:text-teal-700 focus:bg-teal-50 focus:text-teal-700 focus:outline-none"
-              >
-                {service.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className="border-t border-zinc-100 px-4 py-2">
+      </button>
+      {/* Invisible bridge so hover doesn't break between button and menu */}
+      <div
+        className="absolute left-0 top-full z-40 h-4 w-full min-w-[120%]"
+        aria-hidden
+      />
+      <div
+        className={`absolute left-0 top-full z-50 mt-1 w-[280px] rounded-xl border border-zinc-200 bg-white py-2 shadow-xl ring-1 ring-zinc-900/5 ${
+          show ? "block" : "hidden group-hover:block"
+        }`}
+      >
+        {serviceCategories.map((cat, catIndex) => (
+          <div key={cat.key}>
+            {catIndex > 0 && <div className="my-1 border-t border-zinc-100" />}
+            <p className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+              {cat.label}
+            </p>
+            <ul>
+              {cat.services.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="block px-4 py-2 text-sm text-zinc-700 hover:bg-teal-50 hover:text-teal-700"
+                    onClick={() => setOpen(false)}
+                  >
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <div className="mt-1 border-t border-zinc-100 px-4 py-2">
           <Link
             href="/AboutUs"
             className="text-xs font-medium text-teal-600 hover:text-teal-700"
+            onClick={() => setOpen(false)}
           >
-            View all →
+            View all services →
           </Link>
         </div>
       </div>

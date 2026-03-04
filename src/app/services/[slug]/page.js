@@ -20,7 +20,7 @@ export default async function ServiceDetailPage({ params }) {
   if (!service) notFound();
 
   return (
-    <div className="bg-white">
+    <div>
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
         <Link
           href="/AboutUs"

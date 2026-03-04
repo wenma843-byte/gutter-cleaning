@@ -23,7 +23,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="min-h-screen bg-white">
       <section className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
           Get a quote

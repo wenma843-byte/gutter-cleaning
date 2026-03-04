@@ -33,7 +33,7 @@ export default function AboutUs() {
   const services = useServices();
 
   return (
-    <div className="bg-white">
+    <div>
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <h1 className="text-center text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
           Our services

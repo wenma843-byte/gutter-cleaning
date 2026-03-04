@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function GalleryPage() {
   return (
-    <div className="bg-white">
+    <div>
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
         <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
           Before & after

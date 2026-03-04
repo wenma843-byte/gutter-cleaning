@@ -4,7 +4,6 @@ import Image from "next/image";
 import NavServicesDropdown from "./components/NavServicesDropdown";
 import "./globals.css";
 import RenewLogo from "../RENEW LOGO NO BACKGROUND.png";
-import homeBackground from "../Background.jpg";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -21,7 +20,7 @@ function Nav() {
   return (
     <header className="z-40 bg-transparent px-10 pt-4 sm:px-12 sm:pt-6 md:sticky md:top-0">
       <nav
-        className="flex min-w-0 w-full flex-col items-center justify-between gap-4 overflow-hidden rounded-2xl border border-zinc-200 bg-white/80 px-6 py-5 shadow-lg shadow-zinc-200/50 backdrop-blur-md sm:flex-row sm:px-8 lg:px-20"
+        className="flex min-w-0 w-full flex-col items-center justify-between gap-4 overflow-visible rounded-2xl border border-zinc-200 bg-white/80 px-6 py-5 shadow-lg shadow-zinc-200/50 backdrop-blur-md sm:flex-row sm:px-8 lg:px-20"
         aria-label="Main navigation"
       >
         <Link
@@ -69,19 +68,7 @@ function Nav() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${lexend.variable} relative min-h-screen antialiased bg-transparent font-sans text-zinc-900`}>
-        <div
-          className="hero-background-image fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${homeBackground.src})`,
-            opacity: 0.8,
-          }}
-          aria-hidden
-        />
-        <div
-          className="fixed inset-0 -z-10 bg-gradient-to-r from-black/50 to-black/20"
-          aria-hidden
-        />
+      <body className={`${lexend.variable} relative min-h-screen antialiased bg-zinc-100 font-sans text-zinc-900`}>
         <Nav />
         {children}
       </body>

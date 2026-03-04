@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { services } from "@/data/services";
+import homeBackground from "@/Background.jpg";
 
 // Replace with your Google Business review page URL (from Google Business Profile → Share review form)
 const GOOGLE_REVIEW_URL =
@@ -44,6 +45,19 @@ function GoogleGLogo({ className }) {
 export default function Home() {
   return (
     <div>
+      {/* Home-only background: image + gradient so hero and nav area match; other pages use body bg */}
+      <div
+        className="hero-background-image fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${homeBackground.src})`,
+          opacity: 0.8,
+        }}
+        aria-hidden
+      />
+      <div
+        className="fixed inset-0 -z-10 bg-gradient-to-r from-black/50 to-black/20"
+        aria-hidden
+      />
       {/* Hero – MINT-style layout: Google rating, headline, sub-headline, CTA */}
       <section className="relative min-h-[60vh] px-4 py-20 sm:px-6 sm:py-28">
         <div className="relative mx-auto max-w-5xl">

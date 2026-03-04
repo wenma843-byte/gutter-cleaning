@@ -46,10 +46,6 @@ export default function Home() {
     <div>
       {/* Hero – MINT-style layout: Google rating, headline, sub-headline, CTA */}
       <section className="relative min-h-[60vh] px-4 py-20 sm:px-6 sm:py-28">
-        <div
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-black/50 to-black/20"
-          aria-hidden
-        />
         <div className="relative mx-auto max-w-5xl">
           {/* Google review – clickable, links to your Google review page */}
           <a
@@ -122,107 +118,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why us */}
-      <section className="border-t border-zinc-200 bg-white">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-          <h2 className="text-2xl font-semibold text-zinc-900">
-            Why choose us
-          </h2>
-          <ul className="mt-8 grid gap-8 sm:grid-cols-3">
-            <li>
-              <h3 className="font-medium text-teal-700">Trained & insured</h3>
-              <p className="mt-1 text-sm text-zinc-600">
-                Our team is trained and fully insured so you can book with confidence.
-              </p>
-            </li>
-            <li>
-              <h3 className="font-medium text-teal-700">Residential & commercial</h3>
-              <p className="mt-1 text-sm text-zinc-600">
-                From single homes to multi-storey buildings—we work at height safely.
-              </p>
-            </li>
-            <li>
-              <h3 className="font-medium text-teal-700">Flexible scheduling</h3>
-              <p className="mt-1 text-sm text-zinc-600">
-                One-off cleans or a regular schedule that suits your property.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       {/* Plans – dirtymint-style */}
       <section className="border-t border-zinc-200 bg-zinc-50">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <h2 className="text-center text-2xl font-semibold text-zinc-900 sm:text-3xl">
             Choose your plan
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-zinc-600">
             Save more with regular service. All plans include a thorough clean and downspout check.
           </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-lg font-semibold text-teal-700">Monthly</h3>
-              <p className="mt-2 text-2xl font-bold text-zinc-900">25% off</p>
-              <p className="mt-1 text-sm text-zinc-600">per cleaning</p>
-              <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-                <li className="flex items-center gap-2">
+          <div className="mt-10 flex flex-wrap justify-center gap-6">
+            <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
+              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Monthly</h3>
+              <p className="mt-4 text-center text-4xl font-bold text-zinc-900">25% off</p>
+              <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">per cleaning</p>
+              <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Best value
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Priority scheduling
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Consistent protection
                 </li>
               </ul>
               <Link
                 href="/contact"
-                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-sm font-medium text-white hover:bg-teal-700"
+                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-base font-semibold uppercase tracking-wide text-white hover:bg-teal-700"
               >
                 Get a quote
               </Link>
             </div>
-            <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-lg font-semibold text-teal-700">Quarterly</h3>
-              <p className="mt-2 text-2xl font-bold text-zinc-900">15% off</p>
-              <p className="mt-1 text-sm text-zinc-600">per cleaning</p>
-              <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-                <li className="flex items-center gap-2">
+            <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
+              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Quarterly</h3>
+              <p className="mt-4 text-center text-4xl font-bold text-zinc-900">15% off</p>
+              <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">per cleaning</p>
+              <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Great savings
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Seasonal coverage
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Flexible dates
                 </li>
               </ul>
               <Link
                 href="/contact"
-                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-sm font-medium text-white hover:bg-teal-700"
+                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-base font-semibold uppercase tracking-wide text-white hover:bg-teal-700"
               >
                 Get a quote
               </Link>
             </div>
-            <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-lg font-semibold text-teal-700">One-off</h3>
-              <p className="mt-2 text-2xl font-bold text-zinc-900">Standard</p>
-              <p className="mt-1 text-sm text-zinc-600">single visit</p>
-              <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-                <li className="flex items-center gap-2">
+            <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
+              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">One-off</h3>
+              <p className="mt-4 text-center text-4xl font-bold text-zinc-900">Standard</p>
+              <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">single visit</p>
+              <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> No commitment
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Book when you need
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center justify-center gap-2">
                   <span className="text-teal-500">✓</span> Same quality service
                 </li>
               </ul>
               <Link
                 href="/contact"
-                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-sm font-medium text-white hover:bg-teal-700"
+                className="mt-6 block w-full rounded-full bg-teal-600 py-3 text-center text-base font-semibold uppercase tracking-wide text-white hover:bg-teal-700"
               >
                 Get a quote
               </Link>

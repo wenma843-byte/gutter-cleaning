@@ -19,9 +19,9 @@ export const metadata = {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-40 px-10 pt-4 sm:px-12 sm:pt-6">
+    <header className="z-40 bg-transparent px-10 pt-4 sm:px-12 sm:pt-6 md:sticky md:top-0">
       <nav
-        className="flex w-full flex-col items-center justify-between gap-4 overflow-visible rounded-2xl border border-zinc-200 bg-white/80 px-16 py-5 shadow-lg shadow-zinc-200/50 backdrop-blur-md sm:flex-row sm:px-20"
+        className="flex min-w-0 w-full flex-col items-center justify-between gap-4 overflow-hidden rounded-2xl border border-zinc-200 bg-white/80 px-6 py-5 shadow-lg shadow-zinc-200/50 backdrop-blur-md sm:flex-row sm:px-8 lg:px-20"
         aria-label="Main navigation"
       >
         <Link
@@ -38,7 +38,7 @@ function Nav() {
             />
           </span>
         </Link>
-        <ul className="flex w-full flex-wrap items-center justify-center gap-6 text-lg font-medium text-zinc-600 sm:w-auto sm:flex-1 sm:justify-between sm:gap-0 sm:pl-80">
+        <ul className="flex min-w-0 w-full shrink flex-wrap items-center justify-center gap-x-6 gap-y-2 text-lg font-medium text-zinc-600 sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-between sm:gap-0 sm:pl-8 md:pl-24 lg:pl-80">
           <li>
             <Link href="/" className="hover:text-teal-600">
               Home
@@ -69,13 +69,17 @@ function Nav() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${lexend.variable} relative min-h-screen antialiased bg-white font-sans text-zinc-900`}>
+      <body className={`${lexend.variable} relative min-h-screen antialiased bg-transparent font-sans text-zinc-900`}>
         <div
           className="hero-background-image fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${homeBackground.src})`,
             opacity: 0.8,
           }}
+          aria-hidden
+        />
+        <div
+          className="fixed inset-0 -z-10 bg-gradient-to-r from-black/50 to-black/20"
           aria-hidden
         />
         <Nav />

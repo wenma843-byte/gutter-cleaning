@@ -1,7 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useServices } from "@/hooks/useServices";
+import gutterCleaningResidential from "@/home_page_photos/gutter_cleaning_residential.jpg";
+import gutterCleaningCommercial from "@/home_page_photos/gutter_cleaning_commercial.jpg";
+import windowCleaningResidential from "@/home_page_photos/window_cleaning_residential.jpg";
+import windowCleaningCommercial from "@/home_page_photos/window_cleaning_commercial.jpg";
+
+const serviceImages = {
+  "residential-gutter-cleaning": gutterCleaningResidential,
+  "residential-window-cleaning": windowCleaningResidential,
+  "commercial-gutter-cleaning": gutterCleaningCommercial,
+  "commercial-window-cleaning": windowCleaningCommercial,
+};
 
 function PlaceholderIcon({ type }) {
   const icons = {
@@ -48,8 +60,16 @@ export default function AboutUs() {
               key={service.slug}
               className="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm"
             >
-              <div className="relative flex aspect-[2/5] min-h-[280px] w-full shrink-0 items-center justify-center bg-gradient-to-br from-teal-500 to-teal-700">
-                <PlaceholderIcon type={service.key} />
+              <div className="relative flex aspect-[2/5] min-h-[280px] w-full shrink-0 items-center justify-center overflow-hidden bg-gradient-to-br from-teal-500 to-teal-700">
+                {serviceImages[service.slug] && (
+                  <Image
+                    src={serviceImages[service.slug]}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                )}
                 <div
                   className="absolute inset-0 flex items-center justify-center bg-teal-900/90 p-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                   aria-hidden

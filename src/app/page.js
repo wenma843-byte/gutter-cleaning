@@ -1,6 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/data/services";
 import homeBackground from "@/Background.jpg";
+import gutterCleaningResidential from "@/home_page_photos/gutter_cleaning_residential.jpg";
+import gutterCleaningCommercial from "@/home_page_photos/gutter_cleaning_commercial.jpg";
+import windowCleaningResidential from "@/home_page_photos/window_cleaning_residential.jpg";
+import windowCleaningCommercial from "@/home_page_photos/window_cleaning_commercial.jpg";
+
+const serviceImages = {
+  "residential-gutter-cleaning": gutterCleaningResidential,
+  "residential-window-cleaning": windowCleaningResidential,
+  "commercial-gutter-cleaning": gutterCleaningCommercial,
+  "commercial-window-cleaning": windowCleaningCommercial,
+};
 
 // Replace with your Google Business review page URL (from Google Business Profile → Share review form)
 const GOOGLE_REVIEW_URL =
@@ -117,10 +129,15 @@ export default function Home() {
                 href={`/services/${service.slug}`}
                 className="group relative flex aspect-[4/3] overflow-hidden rounded-xl"
               >
-                <div
-                  className="absolute inset-0 bg-gradient-to-br from-teal-500 to-teal-700"
-                  aria-hidden
-                />
+                {serviceImages[service.slug] && (
+                  <Image
+                    src={serviceImages[service.slug]}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                )}
                 <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                   <span className="block text-lg font-bold text-white">
                     {service.category === "residential" ? "Residential" : "Commercial"} – {service.title}
@@ -165,7 +182,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Bi-Annually</h3>
+              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Bi-Annual</h3>
               <p className="mt-4 text-center text-4xl font-bold text-zinc-900">15% off</p>
               <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">per cleaning</p>
               <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">

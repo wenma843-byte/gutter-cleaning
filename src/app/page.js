@@ -143,7 +143,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-6">
             <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Monthly</h3>
+              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Quarterly</h3>
               <p className="mt-4 text-center text-4xl font-bold text-zinc-900">25% off</p>
               <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">per cleaning</p>
               <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">
@@ -165,7 +165,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex h-[430px] w-[315px] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-md">
-              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Quarterly</h3>
+              <h3 className="text-center text-[36px] font-semibold uppercase tracking-wide text-teal-700">Bi-Annually</h3>
               <p className="mt-4 text-center text-4xl font-bold text-zinc-900">15% off</p>
               <p className="mt-1 text-center text-xs uppercase tracking-wide text-zinc-600">per cleaning</p>
               <ul className="mt-2 flex flex-1 flex-col items-center justify-center space-y-4 text-[22px] text-zinc-700">

@@ -20,6 +20,43 @@ body {
   font-family: var(--font-lexend), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Accessibility: skip link (hidden until focused) */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link:focus {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 50;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  background: var(--accent);
+  color: white;
+  border-radius: 0.25rem;
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Visible focus for keyboard users */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* Mobile: shift hero background position for better framing */
 @media (max-width: 767px) {
   .hero-background-image {

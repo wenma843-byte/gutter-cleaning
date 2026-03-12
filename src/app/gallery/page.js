@@ -20,7 +20,10 @@ export const metadata = {
 export default function GalleryPage() {
   return (
     <div>
-      <section className="w-full px-4 py-16 sm:px-6 sm:py-24">
+      <section
+        className="w-full px-4 py-16 sm:px-6 sm:py-24"
+        aria-label="Gallery: before and after photos"
+      >
         <div className="mx-auto max-w-5xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
             Before & after
